@@ -62,13 +62,13 @@ namespace Task2
 
             }
 
-            var p_name = Vapn.Select(x => x.gericht).OrderBy(x => x);
+            var p_name = Vapn.Select(x => x.gericht);
 
             Console.WriteLine();
             Console.WriteLine("Gekaufte Gerichte");
             foreach (var x in p_name) Console.WriteLine(x);
 
-            var p_preis= Vapn.Select(x => x.preis).OrderBy(x => x);
+            var p_preis= Vapn.Select(x => x.preis);
 
           
             Console.WriteLine();
