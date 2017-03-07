@@ -6,31 +6,41 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-    class Program
+    public class Vapiano
     {
-        static void Main(string[] args)
-        {
-            int a = 0;
-            try
-            {
-                switch (a)
-                {
-                    case 0:
-                        Console.WriteLine("a is 0");
+        private string station;
+        private string gericht;
+        private double preis;
 
-                    case 5:
-                        Console.WriteLine("a is 5");
-                        break;
-                    default:
-                        Console.WriteLine("a is something else");
-                        break;
-                }
-            }
-            catch (Exception )
+        public Vapiano(String Station, String GerichtName, double Gerichtpreis)
+        {
+
+            if ((Station == null) || (GerichtName == null)) throw new Exception("Kannst kein Gericht ohne Name erstellen"); 
+            station = Station;
+            gericht = GerichtName;
+            preis = Gerichtpreis;
+        }
+
+
+        public static void Main(string[] args)
+        {
+            var Vapiano = new[]
             {
-                Console.WriteLine("Something happend");
+             new Vapiano("Pasta","Pomodoro", 10.30),
+             new Vapiano("Pizza", "Salami", 6.70),
+            };
+
+            foreach (var b in Vapiano)
+            {
+                Console.WriteLine("{0} {1} {2}", b.station, b.gericht, b.preis);
             }
         }
+
+        
+ 
+
+       
+
 
     }
 }
