@@ -10,31 +10,29 @@ namespace Task2
     {
         private string station;
         private string gericht;
-        private double preis;
-        private double guthaben = 100;
-
-
-       
-
-        public double Guthaben
-        {
-            get
-            {
-                return guthaben ;
-            }
-
-            set {
-
-                if (value < 0)
-                    throw new Exception("Kein Guthaben mehr");
-
-                guthaben = value;
-
-            }
-        }
+        private double Preis;
+        static private double guthaben = 100;
+        
       
+      public double preis
+            {
+            get;
+            }
 
+        public string Gericht
+        {
+            get;
+        }
 
+        public double updateGuthaben(double[] x)
+        {
+            double erg = guthaben;
+            foreach (var y in x) { erg = erg - y; }
+
+            return erg;
+
+           
+        }
 
         public Vapiano(String Station, String GerichtName, double Gerichtpreis)
         {
@@ -42,7 +40,8 @@ namespace Task2
             if ((Station == null) || (GerichtName == null)) throw new Exception("Kannst kein Gericht ohne Name erstellen");
             station = Station;
             gericht = GerichtName;
-            preis = Gerichtpreis;
+            Preis = Gerichtpreis;
+            
         }
 
 
@@ -52,35 +51,29 @@ namespace Task2
             {
              new Vapiano("Pasta","Pomodoro", 10.30),
              new Vapiano("Pizza", "Salami", 6.70),
-             new Vapiano("Bar", "Wein", -45),
+             new Vapiano("Bar", "Wein", 45),
             };
 
             foreach (var b in Vapn)
             {
-                Console.WriteLine("{0} {1} {2} Guthaben : {3}", b.station, b.gericht, b.preis, b.guthaben);
+                
+                Console.WriteLine("{0} {1} {2} ", b.station, b.gericht, b.Preis);
                 
 
             }
-
+            Console.WriteLine("Guthaben vor dem Kaufen: {0}", guthaben);
             var p_name = Vapn.Select(x => x.gericht);
 
             Console.WriteLine();
             Console.WriteLine("Gekaufte Gerichte");
             foreach (var x in p_name) Console.WriteLine(x);
 
-            var p_preis= Vapn.Select(x => x.preis);
+            var p_preis= Vapn.Select(y => y.Preis);
 
-          
-            Console.WriteLine();
-
+            foreach (var x in p_preis) { guthaben = guthaben - x; }
 
 
-            foreach (var x in p_preis)
-            {
-
-                Console.WriteLine(x);
-            }
-
+            Console.WriteLine("Guthaben nach dem Kaufen: {0}", guthaben);
 
 
 
