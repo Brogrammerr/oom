@@ -9,8 +9,8 @@ namespace Task2
     public class Vapiano
     {
         private string station;
-        private string gericht;
-        private double Preis;
+       
+       
         static private double guthaben = 100;
         
       
@@ -39,8 +39,8 @@ namespace Task2
 
             if ((Station == null) || (GerichtName == null)) throw new Exception("Kannst kein Gericht ohne Name erstellen");
             station = Station;
-            gericht = GerichtName;
-            Preis = Gerichtpreis;
+            Gericht = GerichtName;
+            preis = Gerichtpreis;
             
         }
 
@@ -57,22 +57,22 @@ namespace Task2
             foreach (var b in Vapn)
             {
                 
-                Console.WriteLine("{0} {1} {2} ", b.station, b.gericht, b.Preis);
+                Console.WriteLine("{0} {1} {2} ", b.station, b.Gericht, b.preis);
                 
 
             }
             Console.WriteLine("Guthaben vor dem Kaufen: {0}", guthaben);
-            var p_name = Vapn.Select(x => x.gericht);
+            var p_name = Vapn.Select(x => x.Gericht);
 
             Console.WriteLine();
             Console.WriteLine("Gekaufte Gerichte");
             foreach (var x in p_name) Console.WriteLine(x);
 
-            var p_preis= Vapn.Select(y => y.Preis);
+            var p_preis= Vapn.Select(y => y.preis);
 
             foreach (var x in p_preis) { guthaben = guthaben - x; }
 
-
+           
             Console.WriteLine("Guthaben nach dem Kaufen: {0}", guthaben);
 
 
