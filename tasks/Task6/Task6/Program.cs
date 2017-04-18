@@ -32,7 +32,7 @@ namespace Task6
                 };
 
             var Studs = new Subject<Student>();
-
+            Console.WriteLine("Information and communication Systems---- STUDENTS");
             Studs.Subscribe(x =>
                                 {
                                     
@@ -49,7 +49,23 @@ namespace Task6
                 Studs.OnNext(Stud);
             }
 
-    
+
+
+            var StudsWithSameAge = StudentsList.Where(a => a.Age == 23).ToObservable();
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("Students with same Age");
+
+            StudsWithSameAge.Subscribe(
+                a => { Console.WriteLine($"Name :{a.Name}  Alter: {a.Age}  Studienrichtung: {a.Studienrichtung}");
+                    Thread.Sleep(TimeSpan.FromSeconds(2));
+                }
+                
+                );
+
+
 
 
         }
